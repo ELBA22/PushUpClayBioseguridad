@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +9,9 @@ namespace Persistence.Data;
 
 public partial class bioseContext : DbContext
 {
-    public bioseContext()
+ /*    public bioseContext()
     {
-    }
+    } */
 
     public bioseContext(DbContextOptions<bioseContext> options)
         : base(options)
@@ -48,8 +49,9 @@ public partial class bioseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        OnModelCreatingPartial(modelBuilder);
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+       
     }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

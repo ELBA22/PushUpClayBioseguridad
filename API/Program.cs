@@ -1,6 +1,7 @@
 using System.Reflection;
 
 using Microsoft.EntityFrameworkCore;
+using Persistence.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,7 @@ builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<bioseguContext>(options =>
+builder.Services.AddDbContext<bioseContext>(options =>
 {
     string ConnectionString = builder.Configuration.GetConnectionString("MySqlConnection");
     options.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString));
