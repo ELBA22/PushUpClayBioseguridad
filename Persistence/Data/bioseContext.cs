@@ -9,9 +9,9 @@ namespace Persistence.Data;
 
 public partial class bioseContext : DbContext
 {
- /*    public bioseContext()
-    {
-    } */
+    /*    public bioseContext()
+       {
+       } */
 
     public bioseContext(DbContextOptions<bioseContext> options)
         : base(options)
@@ -45,13 +45,18 @@ public partial class bioseContext : DbContext
     public virtual DbSet<Tipopersona> Tipopersonas { get; set; }
 
     public virtual DbSet<Turno> Turnos { get; set; }
+    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Rol> Rols { get; set; }
+    public virtual DbSet<UserRol> UserRols { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-       
+
     }
 
 }
