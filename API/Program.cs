@@ -16,11 +16,11 @@ builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-/* builder.Services.AddDbContext<bioseguContext>(options =>
+builder.Services.AddDbContext<bioseguContext>(options =>
 {
     string ConnectionString = builder.Configuration.GetConnectionString("MySqlConnection");
     options.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString));
-}); */
+}); 
 
 var app = builder.Build();
 
